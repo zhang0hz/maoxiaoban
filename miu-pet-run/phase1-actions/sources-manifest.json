@@ -1,0 +1,70 @@
+{
+  "actions": [
+    {
+      "id": "loaf",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/loaf.png",
+      "qa_note": "6 frames, consistent Miu loaf identity; raw magenta has slight variation."
+    },
+    {
+      "id": "sleep",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/sleep.png",
+      "qa_note": "6 separated sleep frames; raw magenta has slight variation."
+    },
+    {
+      "id": "wake",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/wake.png",
+      "qa_note": "6-frame wake strip, consistent Miu identity, clean background."
+    },
+    {
+      "id": "stretch",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/stretch.png",
+      "qa_note": "6-frame stretch strip, consistent Miu identity, clean background."
+    },
+    {
+      "id": "groom",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/groom.png",
+      "qa_note": "6-frame groom strip, attached paw, consistent Miu identity; raw magenta has slight variation."
+    },
+    {
+      "id": "edge-walk",
+      "frames": 8,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/edge-walk.png",
+      "qa_note": "8-frame calm right-facing edge walk, consistent Miu identity."
+    },
+    {
+      "id": "purr",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/purr.png",
+      "qa_note": "6-frame purr strip, no sound marks or detached effects."
+    },
+    {
+      "id": "sit-watch",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/sit-watch.png",
+      "qa_note": "6-frame attentive sitting strip."
+    },
+    {
+      "id": "celebrate",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/celebrate.png",
+      "qa_note": "6-frame gentle success celebration, no detached effects."
+    },
+    {
+      "id": "comfort",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/comfort.png",
+      "qa_note": "6-frame gentle comfort reaction, no symbols or tears."
+    },
+    {
+      "id": "peek",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/peek.png",
+      "qa_note": "6-frame peek-to-blink motion, no drawn edge or clipping."
+    }
+  ]
+}

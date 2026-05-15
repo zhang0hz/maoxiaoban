@@ -1,0 +1,38 @@
+{
+  "version": "V0.11.1",
+  "status": "ready-for-generation",
+  "principle": "Replace one action at a time. Never install a generated row until visual review and color_audit.py pass.",
+  "referenceActions": ["loaf", "purr", "groom"],
+  "jobs": [
+    {
+      "id": "blink",
+      "frames": 6,
+      "prompt": "Miu calm blink loop, same blue bicolor ragdoll identity and palette as loaf/purr, tiny eyelid motion only, no props, no text, no background."
+    },
+    {
+      "id": "paw-wave",
+      "frames": 6,
+      "prompt": "Miu tiny friendly paw wave, same blue bicolor ragdoll identity and palette, one small paw lift, no wave marks, no symbols, no background."
+    },
+    {
+      "id": "tail-sway",
+      "frames": 6,
+      "prompt": "Miu calm tail sway loop, same blue bicolor ragdoll identity and palette, body nearly still, subtle tail motion, no background."
+    },
+    {
+      "id": "yawn",
+      "frames": 6,
+      "prompt": "Miu sleepy yawn loop, same blue bicolor ragdoll identity and palette, soft cute yawn, no symbols, no detached effects, no background."
+    },
+    {
+      "id": "ear-twitch",
+      "frames": 6,
+      "prompt": "Miu tiny ear twitch loop, same blue bicolor ragdoll identity and palette, body nearly still, no props, no symbols, no background."
+    }
+  ],
+  "requiredChecks": [
+    "visual identity review against loaf/purr/groom",
+    "python3 miu-pet-run/desktop-runner/color_audit.py --frames-root miu-pet-run/phase1-actions/frames",
+    "package audit against /Applications/Miu.app/Contents/Resources/frames"
+  ]
+}

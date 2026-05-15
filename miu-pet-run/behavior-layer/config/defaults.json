@@ -1,0 +1,24 @@
+{
+  "timezone": "Asia/Shanghai",
+  "dayNight": {
+    "wakeStart": "07:30",
+    "workStart": "09:00",
+    "leisureStart": "18:30",
+    "sleepyStart": "22:30",
+    "sleepStart": "23:30"
+  },
+  "behavior": {
+    "workAnimationIntensity": "low",
+    "leisureWalkEnabled": true,
+    "nightSleepEnabled": true,
+    "autoAvoidWindows": true,
+    "defaultZone": "bottom-right"
+  },
+  "thresholds": {
+    "largeFrontWindowRatio": 0.6,
+    "fullscreenWindowRatio": 0.92,
+    "typingQuietMs": 3000,
+    "idleMs": 300000,
+    "mouseNearPetPx": 96
+  }
+}

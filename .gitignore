@@ -1,0 +1,31 @@
+.DS_Store
+
+# macOS build outputs
+*.app/
+*.dmg
+*.zip
+*.pkg
+*.xcarchive/
+
+# Local runner outputs
+miu-pet-run/desktop-runner/MiuDesktopRunner
+miu-pet-run/desktop-runner/*.log
+miu-pet-run/desktop-runner/*.pid
+miu-pet-run/desktop-runner/module-cache/
+miu-pet-run/desktop-runner/猫小伴.app/
+miu-pet-run/dist/
+
+# Signing / notarization secrets
+miu-pet-run/desktop-runner/release.env
+*.p12
+*.cer
+*.mobileprovision
+
+# Python / Node cache
+__pycache__/
+*.pyc
+node_modules/
+
+# Temporary files
+*.tmp
+*.swp
