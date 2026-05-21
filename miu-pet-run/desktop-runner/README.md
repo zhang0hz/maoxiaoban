@@ -6,7 +6,7 @@ Release identity:
 
 - Product name: 猫小伴
 - Bundle ID: `com.zhanghz.maoxiaoban`
-- Version: `1.0.0`
+- Version: `1.0.1`
 - App bundle: `猫小伴.app`
 - Data directory: `~/Library/Application Support/MaoXiaoBan`
 

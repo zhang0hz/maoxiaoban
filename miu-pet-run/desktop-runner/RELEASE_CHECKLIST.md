@@ -4,8 +4,8 @@ Product:
 
 - [x] Product name finalized: 猫小伴
 - [x] Bundle ID set: `com.zhanghz.maoxiaoban`
-- [x] Version set: `1.0.0`
-- [x] Build set: `100`
+- [x] Version set: `1.0.1`
+- [x] Build set: `101`
 - [x] App icon added
 - [ ] User screenshots prepared
 

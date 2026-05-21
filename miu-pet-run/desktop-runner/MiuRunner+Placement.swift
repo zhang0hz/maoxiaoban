@@ -14,16 +14,25 @@ extension MiuRunner {
     }
 
     func placeCorner(screen: NSRect, avoiding frontWindow: NSRect? = nil, force: Bool = false) {
-        if !force, shouldKeepCurrentPlacement(in: screen, avoiding: frontWindow) {
+        let frontWindows = windowAvoidanceRects(on: screen, primary: frontWindow)
+        placeCorner(screen: screen, avoiding: frontWindows, force: force)
+    }
+
+    func placeCorner(screen: NSRect, avoiding frontWindows: [NSRect], force: Bool = false) {
+        if !force, shouldKeepCurrentPlacement(in: screen, avoiding: frontWindows) {
             placeReminderBubble()
             return
         }
-        let rect = bestSafePlacement(in: screen, avoiding: frontWindow)
+        let rect = bestSafePlacement(in: screen, avoiding: frontWindows)
         window.setFrame(rect, display: true)
         placeReminderBubble()
     }
 
     func bestSafePlacement(in screen: NSRect, avoiding frontWindow: NSRect?) -> NSRect {
+        bestSafePlacement(in: screen, avoiding: windowAvoidanceRects(on: screen, primary: frontWindow))
+    }
+
+    func bestSafePlacement(in screen: NSRect, avoiding frontWindows: [NSRect]) -> NSRect {
         let size = displaySize
         let margin = placementMargin
         let base: [(PlacementPreference?, NSPoint)] = [
@@ -39,21 +48,24 @@ extension MiuRunner {
         let ordered = orderedCandidates(base)
         let candidates = ordered.map { clampOrigin($0.1, size: size, in: screen) }
 
-        guard let frontWindow else {
+        let avoidRects = frontWindows.map {
+            $0.insetBy(dx: -frontWindowAvoidanceMargin, dy: -frontWindowAvoidanceMargin)
+        }
+
+        guard !avoidRects.isEmpty else {
             return NSRect(origin: candidates[0], size: size)
         }
 
-        let avoid = frontWindow.insetBy(dx: -frontWindowAvoidanceMargin, dy: -frontWindowAvoidanceMargin)
         if placementPreference != .auto {
             let preferred = NSRect(origin: candidates[0], size: size)
-            if intersectionArea(preferred, avoid) == 0 {
+            if totalIntersectionArea(preferred, avoidRects) == 0 {
                 return preferred
             }
         }
-        let frontCenter = NSPoint(x: avoid.midX, y: avoid.midY)
+        let frontCenter = combinedCenter(of: avoidRects)
         let scored = candidates.enumerated().map { index, origin -> (Int, CGFloat, NSRect) in
             let rect = NSRect(origin: origin, size: size)
-            let overlap = intersectionArea(rect, avoid)
+            let overlap = totalIntersectionArea(rect, avoidRects)
             let center = NSPoint(x: rect.midX, y: rect.midY)
             let distance = hypot(center.x - frontCenter.x, center.y - frontCenter.y)
             let preferredCornerPenalty = CGFloat(index) * 3
@@ -71,12 +83,17 @@ extension MiuRunner {
     }
 
     func shouldKeepCurrentPlacement(in screen: NSRect, avoiding frontWindow: NSRect?) -> Bool {
+        shouldKeepCurrentPlacement(in: screen, avoiding: windowAvoidanceRects(on: screen, primary: frontWindow))
+    }
+
+    func shouldKeepCurrentPlacement(in screen: NSRect, avoiding frontWindows: [NSRect]) -> Bool {
         guard placementPreference == .auto, let window else { return false }
         let current = window.frame
         guard containsRect(screen, current) else { return false }
-        guard let frontWindow else { return true }
-        let avoid = frontWindow.insetBy(dx: -frontWindowAvoidanceMargin, dy: -frontWindowAvoidanceMargin)
-        return intersectionArea(current, avoid) == 0
+        let avoidRects = frontWindows.map {
+            $0.insetBy(dx: -frontWindowAvoidanceMargin, dy: -frontWindowAvoidanceMargin)
+        }
+        return totalIntersectionArea(current, avoidRects) == 0
     }
 
     func containsRect(_ outer: NSRect, _ inner: NSRect) -> Bool {
@@ -97,6 +114,25 @@ extension MiuRunner {
         let intersection = left.intersection(right)
         if intersection.isNull { return 0 }
         return max(0, intersection.width) * max(0, intersection.height)
+    }
+
+    func totalIntersectionArea(_ rect: NSRect, _ avoidRects: [NSRect]) -> CGFloat {
+        avoidRects.reduce(0) { total, avoid in
+            total + intersectionArea(rect, avoid)
+        }
+    }
+
+    func combinedCenter(of rects: [NSRect]) -> NSPoint {
+        guard !rects.isEmpty else { return .zero }
+        let total = rects.reduce((x: CGFloat(0), y: CGFloat(0), area: CGFloat(0))) { partial, rect in
+            let area = max(1, rect.width * rect.height)
+            return (
+                x: partial.x + rect.midX * area,
+                y: partial.y + rect.midY * area,
+                area: partial.area + area
+            )
+        }
+        return NSPoint(x: total.x / total.area, y: total.y / total.area)
     }
 
     func moveAlongSafeEdge() {
@@ -136,11 +172,16 @@ extension MiuRunner {
 
 
     func frontWindowRect(on screen: NSRect) -> NSRect? {
+        frontWindowRects(on: screen).first
+    }
+
+    func frontWindowRects(on screen: NSRect) -> [NSRect] {
         let options: CGWindowListOption = [.optionOnScreenOnly, .excludeDesktopElements]
         guard let windows = CGWindowListCopyWindowInfo(options, kCGNullWindowID) as? [[String: Any]] else {
-            return nil
+            return []
         }
         let ownPID = ProcessInfo.processInfo.processIdentifier
+        var rects: [NSRect] = []
         for info in windows {
             guard let layer = info[kCGWindowLayer as String] as? Int, layer == 0 else { continue }
             guard let pid = info[kCGWindowOwnerPID as String] as? Int32, pid != ownPID else { continue }
@@ -154,9 +195,21 @@ extension MiuRunner {
             let raw = NSRect(x: x, y: y, width: width, height: height)
             let fullScreen = NSScreen.main?.frame ?? screen
             let converted = NSRect(x: x, y: fullScreen.maxY - y - height, width: width, height: height)
-            return bestScreenCoordinateRect(raw: raw, converted: converted, screen: screen)
+            let rect = bestScreenCoordinateRect(raw: raw, converted: converted, screen: screen)
+            if intersectionArea(rect, screen) > 0 {
+                rects.append(rect)
+            }
+            if rects.count >= 6 { break }
         }
-        return nil
+        return rects
+    }
+
+    func windowAvoidanceRects(on screen: NSRect, primary: NSRect?) -> [NSRect] {
+        var rects = frontWindowRects(on: screen)
+        if let primary, !rects.contains(where: { NSEqualRects($0, primary) }) {
+            rects.insert(primary, at: 0)
+        }
+        return rects
     }
 
     func bestScreenCoordinateRect(raw: NSRect, converted: NSRect, screen: NSRect) -> NSRect {

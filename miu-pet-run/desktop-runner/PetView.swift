@@ -12,8 +12,14 @@ final class PetView: NSView {
     private var dragStartMouse: NSPoint?
     private var dragStartFrame: NSRect?
     private var trackingAreaRef: NSTrackingArea?
+    private let alphaHitTestThreshold: CGFloat = 0.08
 
     override var isFlipped: Bool { true }
+
+    override func hitTest(_ point: NSPoint) -> NSView? {
+        guard bounds.contains(point), isOpaquePixel(at: point) else { return nil }
+        return self
+    }
 
     override func updateTrackingAreas() {
         if let trackingAreaRef {
@@ -70,5 +76,21 @@ final class PetView: NSView {
     override func rightMouseDown(with event: NSEvent) {
         guard let menu = contextMenuProvider?() else { return }
         NSMenu.popUpContextMenu(menu, with: event, for: self)
+    }
+
+    func isOpaquePixel(at point: NSPoint) -> Bool {
+        guard let image,
+              bounds.width > 0,
+              bounds.height > 0,
+              let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)
+        else {
+            return false
+        }
+        let bitmap = NSBitmapImageRep(cgImage: cgImage)
+        let xRatio = min(max(point.x / bounds.width, 0), 1)
+        let yRatio = min(max(point.y / bounds.height, 0), 1)
+        let pixelX = min(max(Int(xRatio * CGFloat(bitmap.pixelsWide)), 0), bitmap.pixelsWide - 1)
+        let pixelY = min(max(Int(yRatio * CGFloat(bitmap.pixelsHigh)), 0), bitmap.pixelsHigh - 1)
+        return (bitmap.colorAt(x: pixelX, y: pixelY)?.alphaComponent ?? 1) > alphaHitTestThreshold
     }
 }
