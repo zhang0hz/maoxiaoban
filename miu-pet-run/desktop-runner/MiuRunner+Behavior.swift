@@ -161,11 +161,11 @@ extension MiuRunner {
         case .sleepy:
             return BehaviorDecision(state: .sleepy, action: idleSeconds > 240 ? "sleep" : "groom", minimumSeconds: 5.0, shouldHide: false, shouldPlace: true, keepWalkingPlacement: false)
         case .work:
-            return BehaviorDecision(state: .work, action: workAction(snapshot: snapshot, coverage: coverage, idleSeconds: idleSeconds), minimumSeconds: 9.0, shouldHide: false, shouldPlace: true, keepWalkingPlacement: false)
+            return BehaviorDecision(state: .work, action: workAction(snapshot: snapshot, coverage: coverage, idleSeconds: idleSeconds), minimumSeconds: 12.0, shouldHide: false, shouldPlace: true, keepWalkingPlacement: false)
         case .leisure:
-            return BehaviorDecision(state: .leisure, action: leisureAction(coverage: coverage, idleSeconds: idleSeconds), minimumSeconds: 7.0, shouldHide: false, shouldPlace: true, keepWalkingPlacement: true)
+            return BehaviorDecision(state: .leisure, action: leisureAction(coverage: coverage, idleSeconds: idleSeconds), minimumSeconds: 10.0, shouldHide: false, shouldPlace: true, keepWalkingPlacement: true)
         case .idle:
-            return BehaviorDecision(state: .idle, action: idleAction(idleSeconds: idleSeconds), minimumSeconds: 7.0, shouldHide: false, shouldPlace: true, keepWalkingPlacement: false)
+            return BehaviorDecision(state: .idle, action: idleAction(idleSeconds: idleSeconds), minimumSeconds: 9.0, shouldHide: false, shouldPlace: true, keepWalkingPlacement: false)
         }
     }
 
@@ -254,32 +254,32 @@ extension MiuRunner {
 
     func workAction(snapshot: SystemActivitySnapshot, coverage: CGFloat, idleSeconds: CFTimeInterval) -> String {
         if snapshot.kind == .communication { return "loaf" }
-        if coverage >= 0.78 { return "sleep" }
-        if snapshot.quiet || coverage >= 0.55 { return idleSeconds > 600 ? "groom" : "loaf" }
-        if idleSeconds > 420 { return "stretch" }
+        if coverage >= 0.72 { return "sleep" }
+        if snapshot.quiet || coverage >= 0.50 { return idleSeconds > 900 ? "groom" : "loaf" }
+        if idleSeconds > 720 { return "stretch" }
         return subtleCompanionAction(base: "loaf", idleSeconds: idleSeconds)
     }
 
     func leisureAction(coverage: CGFloat, idleSeconds: CFTimeInterval) -> String {
         if coverage >= 0.78 { return "loaf" }
-        if idleSeconds > 480 { return walkAction() }
-        if idleSeconds > 180 { return "peek" }
+        if idleSeconds > 900 { return walkAction() }
+        if idleSeconds > 300 { return "peek" }
         return subtleCompanionAction(base: preferredAction(["tail-sway", "purr"]), idleSeconds: idleSeconds)
     }
 
     func idleAction(idleSeconds: CFTimeInterval) -> String {
-        if idleSeconds > 900 { return "sleep" }
-        if idleSeconds > 540 { return preferredAction(["yawn", "stretch"]) }
-        if idleSeconds > 180 { return "groom" }
-        return subtleCompanionAction(base: "purr", idleSeconds: idleSeconds)
+        if idleSeconds > 1200 { return "sleep" }
+        if idleSeconds > 720 { return preferredAction(["yawn", "stretch"]) }
+        if idleSeconds > 300 { return "groom" }
+        return subtleCompanionAction(base: preferredAction(["tail-sway", "purr"]), idleSeconds: idleSeconds)
     }
 
     func prepareReminderMotion(for action: String, now: Date) -> String {
-        guard now.timeIntervalSince(lastReminderMotionAt) > 4.0 else { return action }
+        guard now.timeIntervalSince(lastReminderMotionAt) > 6.0 else { return action }
         lastReminderMotionAt = now
         if action == "sleep" { return preferredAction(["yawn", "groom", action]) }
-        if action == "stretch" { return preferredAction(["paw-wave", "blink", action]) }
-        return preferredAction(["paw-wave", "blink", action])
+        if action == "stretch" { return preferredAction(["groom", "paw-wave", "blink", action]) }
+        return preferredAction(["paw-wave", "blink", "ear-twitch", action])
     }
 
     func transitionAction(from previous: BehaviorState, to next: BehaviorState, target: String) -> String {
@@ -304,12 +304,16 @@ extension MiuRunner {
 
     func subtleCompanionAction(base: String, idleSeconds: CFTimeInterval) -> String {
         let now = Date()
-        guard idleSeconds < 180,
-              now.timeIntervalSince(lastMicroExpressionAt) > 32
+        guard idleSeconds < 240,
+              now.timeIntervalSince(lastMicroExpressionAt) > 48
         else {
             return base
         }
         lastMicroExpressionAt = now
-        return preferredAction(["blink", "ear-twitch", base])
+        let bucket = Int(now.timeIntervalSinceReferenceDate / 48)
+        if bucket.isMultiple(of: 3) {
+            return preferredAction(["ear-twitch", "blink", base])
+        }
+        return preferredAction(["blink", base])
     }
 }

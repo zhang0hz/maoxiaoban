@@ -213,6 +213,22 @@ extension MiuRunner {
         syncSettingsWindow()
     }
 
+    @objc func resetRecommendedSettings() {
+        manualMode = nil
+        autoPositionEnabled = true
+        animationPaused = false
+        placementPreference = .auto
+        sizeScale = 1.0
+        userPositionPinned = false
+        restoredWindowOrigin = nil
+        applyPetSize()
+        updateBehavior()
+        saveSettings()
+        refreshMenus()
+        syncSettingsWindow()
+        setTemporaryAction("purr", seconds: 1.8)
+    }
+
     @objc func settingsReminderDismissChanged(_ sender: NSSegmentedControl) {
         switch sender.selectedSegment {
         case 0:

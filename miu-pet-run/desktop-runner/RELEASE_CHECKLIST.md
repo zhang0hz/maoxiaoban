@@ -6,6 +6,7 @@ Product:
 - [x] Bundle ID set: `com.zhanghz.maoxiaoban`
 - [x] Version set: `1.0.1`
 - [x] Build set: `101`
+- [x] Settings overview displays version and build information from `Info.plist`
 - [x] App icon added
 - [ ] User screenshots prepared
 
@@ -30,6 +31,7 @@ Signing:
 QA:
 
 - [x] Smoke test script available: `smoke-test.sh`
+- [x] Roadmap static checks included in smoke test
 - [x] App bundle build passes
 - [x] Behavior-layer tests pass
 - [x] Color audit passes
@@ -55,6 +57,7 @@ Docs:
 - [x] Troubleshooting guide
 - [x] V1.0 experience QA guide
 - [x] V1.3 distribution readiness handoff
+- [x] Internal GitHub upload notes documented for unstable terminal network
 
 GitHub Release:
 
@@ -63,3 +66,4 @@ GitHub Release:
 - [ ] Upload `猫小伴.zip`
 - [ ] Include install, uninstall, privacy, and troubleshooting links
 - [ ] Mark release notes with Developer ID / notarization status
+- [ ] If terminal network is unstable, publish code through GitHub Desktop first, then push tags later with `git push origin --tags`

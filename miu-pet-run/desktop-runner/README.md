@@ -29,6 +29,8 @@ Features:
 - Configurable reminder bubble auto-dismiss: 10秒 / 30秒 / 60秒 / 不自动.
 - Reminder editor in settings: enable switch, interval/fixed time, active time range, and message.
 - Reminder queue defers and replays reminders during fullscreen / quiet states.
+- Settings overview shows version, build number, Bundle ID, and internal distribution status.
+- Behavior settings include `恢复推荐设置` for non-destructive return to recommended mode, placement, animation, and size.
 - Behavior decisions use an explicit state-machine layer.
 - Behavior debug panel in settings shows state, action, app classification, window coverage, placement, reminder queue, recent behavior log, and copyable diagnostics.
 - Leisure walking uses direction-specific `walk-right` / `walk-left` frames, so Miu does not moonwalk.
@@ -49,10 +51,12 @@ Roadmap:
 - See `V0.5_REMINDERS.md` for reminder behavior and config notes.
 - See `V0.18_BEHAVIOR_DEBUG_PANEL.md` for behavior debug panel notes.
 - See `V1.0_EXPERIENCE_QA.md` for final experience QA notes.
+- See `V1.0.2_INTERNAL_PATCH.md` for the current internal patch boundary.
 - See `V0.19_BEHAVIOR_TUNING.md` for quieter work behavior and slower action switching.
 - See `V0.20_VISUAL_MOTION.md` for transition, micro-expression, and breathing-idle notes.
 - See `V1.2_SETTINGS_EXPERIENCE.md` for settings simplification and reminder validation.
 - See `V1.3_DISTRIBUTION_READY.md` for public release handoff notes.
+- See `GITHUB_RELEASE_DRAFT.md` for release-note copy and upload checklist.
 
 Build:
 

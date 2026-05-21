@@ -15,6 +15,12 @@ Install:
 
 Public releases should be signed with Developer ID and notarized so the Gatekeeper approval step is normally unnecessary.
 
+Internal test build status:
+
+- Current local packages may use ad-hoc signing.
+- The settings overview shows the app version, build number, Bundle ID, and internal distribution status.
+- If macOS warns that the app cannot be verified, this is expected for internal builds before Developer ID signing and notarization.
+
 Local development install:
 
 ```bash

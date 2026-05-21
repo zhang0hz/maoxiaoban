@@ -274,6 +274,8 @@ extension MiuRunner {
         title.font = NSFont.boldSystemFont(ofSize: 18)
         stack.addArrangedSubview(title)
 
+        stack.addArrangedSubview(makeVersionInfoView())
+
         let status = NSTextField(labelWithString: "")
         statusLabel = status
         stack.addArrangedSubview(status)
@@ -316,6 +318,31 @@ extension MiuRunner {
         return wrapSettingsStack(stack)
     }
 
+    func makeVersionInfoView() -> NSView {
+        let stack = NSStackView()
+        stack.orientation = .vertical
+        stack.alignment = .leading
+        stack.spacing = 4
+
+        let title = NSTextField(labelWithString: "版本信息")
+        title.font = NSFont.boldSystemFont(ofSize: 13)
+        stack.addArrangedSubview(title)
+
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "未知"
+        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "未知"
+        let bundleID = Bundle.main.bundleIdentifier ?? AppIdentity.bundleIdentifier
+
+        let detail = NSTextField(labelWithString: "当前版本：\(version) (\(build))\nBundle ID：\(bundleID)\n分发状态：本地内测包，暂未 Developer ID 签名和 Notarization")
+        detail.font = NSFont.systemFont(ofSize: 12)
+        detail.textColor = .secondaryLabelColor
+        detail.lineBreakMode = .byWordWrapping
+        detail.maximumNumberOfLines = 4
+        detail.widthAnchor.constraint(equalToConstant: 560).isActive = true
+        stack.addArrangedSubview(detail)
+
+        return stack
+    }
+
     func makeBehaviorSettingsView() -> NSView {
         let stack = settingsStack()
         stack.addArrangedSubview(NSTextField(labelWithString: "模式"))
@@ -344,6 +371,12 @@ extension MiuRunner {
         let size = NSSegmentedControl(labels: ["小", "中", "大"], trackingMode: .selectOne, target: self, action: #selector(settingsSizeChanged(_:)))
         sizeControl = size
         stack.addArrangedSubview(size)
+
+        let buttons = NSStackView()
+        buttons.orientation = .horizontal
+        buttons.spacing = 8
+        buttons.addArrangedSubview(NSButton(title: "恢复推荐设置", target: self, action: #selector(resetRecommendedSettings)))
+        stack.addArrangedSubview(buttons)
 
         return wrapSettingsStack(stack)
     }
