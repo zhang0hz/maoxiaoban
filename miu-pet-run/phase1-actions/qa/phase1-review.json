@@ -1,0 +1,853 @@
+{
+  "ok": true,
+  "actions": [
+    {
+      "id": "loaf",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/loaf.png",
+      "method": "components",
+      "gif": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/gifs/miu-loaf.gif",
+      "frameInfos": [
+        {
+          "index": 0,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/loaf/00.png",
+          "nontransparentPixels": 27824,
+          "bbox": [
+            5,
+            10,
+            187,
+            198
+          ]
+        },
+        {
+          "index": 1,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/loaf/01.png",
+          "nontransparentPixels": 27950,
+          "bbox": [
+            5,
+            9,
+            187,
+            198
+          ]
+        },
+        {
+          "index": 2,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/loaf/02.png",
+          "nontransparentPixels": 27758,
+          "bbox": [
+            5,
+            10,
+            187,
+            198
+          ]
+        },
+        {
+          "index": 3,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/loaf/03.png",
+          "nontransparentPixels": 27935,
+          "bbox": [
+            5,
+            9,
+            187,
+            198
+          ]
+        },
+        {
+          "index": 4,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/loaf/04.png",
+          "nontransparentPixels": 27767,
+          "bbox": [
+            5,
+            10,
+            187,
+            198
+          ]
+        },
+        {
+          "index": 5,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/loaf/05.png",
+          "nontransparentPixels": 28248,
+          "bbox": [
+            5,
+            9,
+            187,
+            199
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sleep",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/sleep.png",
+      "method": "components",
+      "gif": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/gifs/miu-sleep.gif",
+      "frameInfos": [
+        {
+          "index": 0,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sleep/00.png",
+          "nontransparentPixels": 22087,
+          "bbox": [
+            5,
+            32,
+            187,
+            176
+          ]
+        },
+        {
+          "index": 1,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sleep/01.png",
+          "nontransparentPixels": 22119,
+          "bbox": [
+            5,
+            31,
+            187,
+            177
+          ]
+        },
+        {
+          "index": 2,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sleep/02.png",
+          "nontransparentPixels": 22009,
+          "bbox": [
+            5,
+            32,
+            187,
+            176
+          ]
+        },
+        {
+          "index": 3,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sleep/03.png",
+          "nontransparentPixels": 22180,
+          "bbox": [
+            5,
+            31,
+            187,
+            176
+          ]
+        },
+        {
+          "index": 4,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sleep/04.png",
+          "nontransparentPixels": 21891,
+          "bbox": [
+            5,
+            32,
+            187,
+            176
+          ]
+        },
+        {
+          "index": 5,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sleep/05.png",
+          "nontransparentPixels": 21859,
+          "bbox": [
+            5,
+            32,
+            187,
+            176
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wake",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/wake.png",
+      "method": "components",
+      "gif": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/gifs/miu-wake.gif",
+      "frameInfos": [
+        {
+          "index": 0,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/wake/00.png",
+          "nontransparentPixels": 18415,
+          "bbox": [
+            5,
+            42,
+            187,
+            165
+          ]
+        },
+        {
+          "index": 1,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/wake/01.png",
+          "nontransparentPixels": 19081,
+          "bbox": [
+            5,
+            35,
+            187,
+            173
+          ]
+        },
+        {
+          "index": 2,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/wake/02.png",
+          "nontransparentPixels": 22508,
+          "bbox": [
+            5,
+            18,
+            187,
+            190
+          ]
+        },
+        {
+          "index": 3,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/wake/03.png",
+          "nontransparentPixels": 22664,
+          "bbox": [
+            15,
+            5,
+            177,
+            203
+          ]
+        },
+        {
+          "index": 4,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/wake/04.png",
+          "nontransparentPixels": 21807,
+          "bbox": [
+            23,
+            5,
+            168,
+            203
+          ]
+        },
+        {
+          "index": 5,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/wake/05.png",
+          "nontransparentPixels": 21528,
+          "bbox": [
+            24,
+            5,
+            168,
+            203
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stretch",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/stretch.png",
+      "method": "components",
+      "gif": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/gifs/miu-stretch.gif",
+      "frameInfos": [
+        {
+          "index": 0,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/stretch/00.png",
+          "nontransparentPixels": 23652,
+          "bbox": [
+            17,
+            5,
+            174,
+            203
+          ]
+        },
+        {
+          "index": 1,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/stretch/01.png",
+          "nontransparentPixels": 24004,
+          "bbox": [
+            5,
+            6,
+            187,
+            201
+          ]
+        },
+        {
+          "index": 2,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/stretch/02.png",
+          "nontransparentPixels": 17663,
+          "bbox": [
+            14,
+            5,
+            178,
+            203
+          ]
+        },
+        {
+          "index": 3,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/stretch/03.png",
+          "nontransparentPixels": 20363,
+          "bbox": [
+            5,
+            6,
+            187,
+            202
+          ]
+        },
+        {
+          "index": 4,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/stretch/04.png",
+          "nontransparentPixels": 26407,
+          "bbox": [
+            6,
+            5,
+            186,
+            203
+          ]
+        },
+        {
+          "index": 5,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/stretch/05.png",
+          "nontransparentPixels": 23209,
+          "bbox": [
+            19,
+            5,
+            173,
+            203
+          ]
+        }
+      ]
+    },
+    {
+      "id": "groom",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/groom.png",
+      "method": "components",
+      "gif": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/gifs/miu-groom.gif",
+      "frameInfos": [
+        {
+          "index": 0,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/groom/00.png",
+          "nontransparentPixels": 23094,
+          "bbox": [
+            19,
+            5,
+            173,
+            203
+          ]
+        },
+        {
+          "index": 1,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/groom/01.png",
+          "nontransparentPixels": 22971,
+          "bbox": [
+            19,
+            5,
+            172,
+            203
+          ]
+        },
+        {
+          "index": 2,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/groom/02.png",
+          "nontransparentPixels": 22836,
+          "bbox": [
+            20,
+            5,
+            172,
+            203
+          ]
+        },
+        {
+          "index": 3,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/groom/03.png",
+          "nontransparentPixels": 23336,
+          "bbox": [
+            19,
+            5,
+            173,
+            203
+          ]
+        },
+        {
+          "index": 4,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/groom/04.png",
+          "nontransparentPixels": 23281,
+          "bbox": [
+            19,
+            5,
+            173,
+            203
+          ]
+        },
+        {
+          "index": 5,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/groom/05.png",
+          "nontransparentPixels": 23405,
+          "bbox": [
+            19,
+            5,
+            172,
+            203
+          ]
+        }
+      ]
+    },
+    {
+      "id": "edge-walk",
+      "frames": 8,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/edge-walk.png",
+      "method": "components",
+      "gif": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/gifs/miu-edge-walk.gif",
+      "frameInfos": [
+        {
+          "index": 0,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/edge-walk/00.png",
+          "nontransparentPixels": 21437,
+          "bbox": [
+            8,
+            5,
+            184,
+            203
+          ]
+        },
+        {
+          "index": 1,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/edge-walk/01.png",
+          "nontransparentPixels": 21600,
+          "bbox": [
+            9,
+            5,
+            182,
+            203
+          ]
+        },
+        {
+          "index": 2,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/edge-walk/02.png",
+          "nontransparentPixels": 22161,
+          "bbox": [
+            5,
+            5,
+            186,
+            203
+          ]
+        },
+        {
+          "index": 3,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/edge-walk/03.png",
+          "nontransparentPixels": 22587,
+          "bbox": [
+            5,
+            7,
+            187,
+            201
+          ]
+        },
+        {
+          "index": 4,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/edge-walk/04.png",
+          "nontransparentPixels": 20882,
+          "bbox": [
+            12,
+            5,
+            179,
+            203
+          ]
+        },
+        {
+          "index": 5,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/edge-walk/05.png",
+          "nontransparentPixels": 20991,
+          "bbox": [
+            11,
+            5,
+            181,
+            203
+          ]
+        },
+        {
+          "index": 6,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/edge-walk/06.png",
+          "nontransparentPixels": 19316,
+          "bbox": [
+            19,
+            5,
+            173,
+            203
+          ]
+        },
+        {
+          "index": 7,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/edge-walk/07.png",
+          "nontransparentPixels": 21238,
+          "bbox": [
+            8,
+            5,
+            184,
+            203
+          ]
+        }
+      ]
+    },
+    {
+      "id": "purr",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/purr.png",
+      "method": "components",
+      "gif": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/gifs/miu-purr.gif",
+      "frameInfos": [
+        {
+          "index": 0,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/purr/00.png",
+          "nontransparentPixels": 24683,
+          "bbox": [
+            14,
+            5,
+            178,
+            203
+          ]
+        },
+        {
+          "index": 1,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/purr/01.png",
+          "nontransparentPixels": 24494,
+          "bbox": [
+            15,
+            5,
+            177,
+            203
+          ]
+        },
+        {
+          "index": 2,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/purr/02.png",
+          "nontransparentPixels": 24378,
+          "bbox": [
+            15,
+            5,
+            177,
+            203
+          ]
+        },
+        {
+          "index": 3,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/purr/03.png",
+          "nontransparentPixels": 24478,
+          "bbox": [
+            15,
+            5,
+            177,
+            203
+          ]
+        },
+        {
+          "index": 4,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/purr/04.png",
+          "nontransparentPixels": 24439,
+          "bbox": [
+            15,
+            5,
+            177,
+            203
+          ]
+        },
+        {
+          "index": 5,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/purr/05.png",
+          "nontransparentPixels": 24308,
+          "bbox": [
+            15,
+            5,
+            177,
+            203
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sit-watch",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/sit-watch.png",
+      "method": "components",
+      "gif": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/gifs/miu-sit-watch.gif",
+      "frameInfos": [
+        {
+          "index": 0,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sit-watch/00.png",
+          "nontransparentPixels": 21402,
+          "bbox": [
+            26,
+            5,
+            166,
+            203
+          ]
+        },
+        {
+          "index": 1,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sit-watch/01.png",
+          "nontransparentPixels": 20329,
+          "bbox": [
+            26,
+            5,
+            165,
+            203
+          ]
+        },
+        {
+          "index": 2,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sit-watch/02.png",
+          "nontransparentPixels": 21770,
+          "bbox": [
+            25,
+            5,
+            166,
+            203
+          ]
+        },
+        {
+          "index": 3,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sit-watch/03.png",
+          "nontransparentPixels": 21737,
+          "bbox": [
+            25,
+            5,
+            166,
+            203
+          ]
+        },
+        {
+          "index": 4,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sit-watch/04.png",
+          "nontransparentPixels": 19883,
+          "bbox": [
+            28,
+            5,
+            164,
+            203
+          ]
+        },
+        {
+          "index": 5,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/sit-watch/05.png",
+          "nontransparentPixels": 21608,
+          "bbox": [
+            25,
+            5,
+            166,
+            203
+          ]
+        }
+      ]
+    },
+    {
+      "id": "celebrate",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/celebrate.png",
+      "method": "components",
+      "gif": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/gifs/miu-celebrate.gif",
+      "frameInfos": [
+        {
+          "index": 0,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/celebrate/00.png",
+          "nontransparentPixels": 25101,
+          "bbox": [
+            12,
+            5,
+            180,
+            203
+          ]
+        },
+        {
+          "index": 1,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/celebrate/01.png",
+          "nontransparentPixels": 24525,
+          "bbox": [
+            13,
+            5,
+            178,
+            203
+          ]
+        },
+        {
+          "index": 2,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/celebrate/02.png",
+          "nontransparentPixels": 22712,
+          "bbox": [
+            14,
+            5,
+            178,
+            203
+          ]
+        },
+        {
+          "index": 3,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/celebrate/03.png",
+          "nontransparentPixels": 23546,
+          "bbox": [
+            13,
+            5,
+            178,
+            203
+          ]
+        },
+        {
+          "index": 4,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/celebrate/04.png",
+          "nontransparentPixels": 24807,
+          "bbox": [
+            12,
+            5,
+            179,
+            203
+          ]
+        },
+        {
+          "index": 5,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/celebrate/05.png",
+          "nontransparentPixels": 24755,
+          "bbox": [
+            13,
+            5,
+            178,
+            203
+          ]
+        }
+      ]
+    },
+    {
+      "id": "comfort",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/comfort.png",
+      "method": "components",
+      "gif": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/gifs/miu-comfort.gif",
+      "frameInfos": [
+        {
+          "index": 0,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/comfort/00.png",
+          "nontransparentPixels": 26797,
+          "bbox": [
+            10,
+            5,
+            182,
+            203
+          ]
+        },
+        {
+          "index": 1,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/comfort/01.png",
+          "nontransparentPixels": 21713,
+          "bbox": [
+            18,
+            5,
+            173,
+            203
+          ]
+        },
+        {
+          "index": 2,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/comfort/02.png",
+          "nontransparentPixels": 25322,
+          "bbox": [
+            14,
+            5,
+            178,
+            203
+          ]
+        },
+        {
+          "index": 3,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/comfort/03.png",
+          "nontransparentPixels": 24886,
+          "bbox": [
+            16,
+            5,
+            175,
+            203
+          ]
+        },
+        {
+          "index": 4,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/comfort/04.png",
+          "nontransparentPixels": 25074,
+          "bbox": [
+            16,
+            5,
+            176,
+            203
+          ]
+        },
+        {
+          "index": 5,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/comfort/05.png",
+          "nontransparentPixels": 24894,
+          "bbox": [
+            15,
+            5,
+            177,
+            203
+          ]
+        }
+      ]
+    },
+    {
+      "id": "peek",
+      "frames": 6,
+      "source": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/sources/peek.png",
+      "method": "components",
+      "gif": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/gifs/miu-peek.gif",
+      "frameInfos": [
+        {
+          "index": 0,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/peek/00.png",
+          "nontransparentPixels": 18200,
+          "bbox": [
+            5,
+            40,
+            187,
+            168
+          ]
+        },
+        {
+          "index": 1,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/peek/01.png",
+          "nontransparentPixels": 21802,
+          "bbox": [
+            5,
+            26,
+            187,
+            182
+          ]
+        },
+        {
+          "index": 2,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/peek/02.png",
+          "nontransparentPixels": 27571,
+          "bbox": [
+            5,
+            6,
+            187,
+            202
+          ]
+        },
+        {
+          "index": 3,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/peek/03.png",
+          "nontransparentPixels": 24059,
+          "bbox": [
+            17,
+            5,
+            174,
+            203
+          ]
+        },
+        {
+          "index": 4,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/peek/04.png",
+          "nontransparentPixels": 23471,
+          "bbox": [
+            19,
+            5,
+            173,
+            203
+          ]
+        },
+        {
+          "index": 5,
+          "file": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/frames/peek/05.png",
+          "nontransparentPixels": 23281,
+          "bbox": [
+            19,
+            5,
+            173,
+            203
+          ]
+        }
+      ]
+    }
+  ],
+  "contactSheet": "/Users/zhanghz/Documents/Codex/2026-05-12/new-chat/miu-pet-run/phase1-actions/qa/phase1-contact-sheet.png"
+}

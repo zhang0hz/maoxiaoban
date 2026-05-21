@@ -1,0 +1,36 @@
+{
+  "version": "V0.11",
+  "note": "Runtime-ready action folders. Current pass uses color-audited source frames to avoid identity drift; future generated replacements must pass color_audit.py before install.",
+  "actions": [
+    {
+      "id": "blink",
+      "frames": 6,
+      "currentSourceAction": "purr",
+      "runtimeUse": "mouse leave, active work, active idle"
+    },
+    {
+      "id": "paw-wave",
+      "frames": 6,
+      "currentSourceAction": "celebrate",
+      "runtimeUse": "mouse enter"
+    },
+    {
+      "id": "tail-sway",
+      "frames": 6,
+      "currentSourceAction": "loaf",
+      "runtimeUse": "active leisure"
+    },
+    {
+      "id": "yawn",
+      "frames": 6,
+      "currentSourceAction": "wake",
+      "runtimeUse": "long idle before sleep"
+    },
+    {
+      "id": "ear-twitch",
+      "frames": 6,
+      "currentSourceAction": "groom",
+      "runtimeUse": "reserved subtle idle reaction"
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "pet": "Miu",
+  "phase": "phase1-visual-actions",
+  "runtimeCompatibility": {
+    "currentCodexPetAtlas": "fixed-8x9",
+    "strategy": "extension-asset-library-first",
+    "note": "Additional actions are stored outside the current runtime atlas until the behavior layer can consume them or remap selected actions into fixed runtime states."
+  },
+  "identity": {
+    "species": "blue bicolor ragdoll cat",
+    "stableTraits": [
+      "soft white fluffy body",
+      "cool gray-blue ears and mask",
+      "bright blue eyes",
+      "tiny pink nose",
+      "white blaze",
+      "gentle cute temperament"
+    ],
+    "style": "Codex digital pet sprite style, compact chibi pixel-art-adjacent mascot, thick dark outline, flat cel shading, limited palette"
+  },
+  "actions": [
+    {
+      "id": "loaf",
+      "frames": 6,
+      "priority": 1,
+      "mode": "work",
+      "purpose": "quiet side companion while the user works",
+      "status": "formal",
+      "source": "sources/loaf.png",
+      "gif": "gifs/miu-loaf.gif"
+    },
+    {
+      "id": "sleep",
+      "frames": 6,
+      "priority": 2,
+      "mode": "night",
+      "purpose": "night sleep loop based on Beijing time",
+      "status": "formal",
+      "source": "sources/sleep.png",
+      "gif": "gifs/miu-sleep.gif"
+    },
+    {
+      "id": "wake",
+      "frames": 6,
+      "priority": 3,
+      "mode": "morning",
+      "purpose": "wake-up transition before daytime behavior",
+      "status": "formal",
+      "source": "sources/wake.png",
+      "gif": "gifs/miu-wake.gif"
+    },
+    {
+      "id": "stretch",
+      "frames": 6,
+      "priority": 4,
+      "mode": "morning-or-break",
+      "purpose": "gentle stretch for wake-up or later reminder reuse",
+      "status": "formal",
+      "source": "sources/stretch.png",
+      "gif": "gifs/miu-stretch.gif"
+    },
+    {
+      "id": "peek",
+      "frames": 6,
+      "priority": 5,
+      "mode": "idle-or-leisure",
+      "purpose": "peek from a screen edge without blocking work content",
+      "status": "formal",
+      "source": "sources/peek.png",
+      "gif": "gifs/miu-peek.gif"
+    },
+    {
+      "id": "edge-walk",
+      "frames": 8,
+      "priority": 6,
+      "mode": "leisure",
+      "purpose": "walk along safe screen or window edges",
+      "status": "formal",
+      "source": "sources/edge-walk.png",
+      "gif": "gifs/miu-edge-walk.gif"
+    },
+    {
+      "id": "groom",
+      "frames": 6,
+      "priority": 7,
+      "mode": "quiet-idle",
+      "purpose": "lick paw and wash face during calm idle moments",
+      "status": "formal",
+      "source": "sources/groom.png",
+      "gif": "gifs/miu-groom.gif"
+    },
+    {
+      "id": "purr",
+      "frames": 6,
+      "priority": 8,
+      "mode": "work",
+      "purpose": "soft blink and tiny body vibration, low-distraction companionship",
+      "status": "formal",
+      "source": "sources/purr.png",
+      "gif": "gifs/miu-purr.gif"
+    },
+    {
+      "id": "sit-watch",
+      "frames": 6,
+      "priority": 9,
+      "mode": "work-or-busy",
+      "purpose": "sit and watch patiently while the user works or a task runs",
+      "status": "formal",
+      "source": "sources/sit-watch.png",
+      "gif": "gifs/miu-sit-watch.gif"
+    },
+    {
+      "id": "walk-right",
+      "frames": 8,
+      "priority": 10,
+      "mode": "leisure",
+      "purpose": "right-facing safe-edge walking loop used by the macOS runner",
+      "status": "formal",
+      "source": "frames/walk-right",
+      "gif": null
+    },
+    {
+      "id": "walk-left",
+      "frames": 8,
+      "priority": 11,
+      "mode": "leisure",
+      "purpose": "left-facing safe-edge walking loop used by the macOS runner",
+      "status": "formal",
+      "source": "frames/walk-left",
+      "gif": null
+    },
+    {
+      "id": "blink",
+      "frames": 6,
+      "priority": 12,
+      "mode": "micro-expression",
+      "purpose": "very light random blink for calm work and idle states",
+      "status": "formal",
+      "source": "frames/blink",
+      "gif": null
+    },
+    {
+      "id": "ear-twitch",
+      "frames": 6,
+      "priority": 13,
+      "mode": "micro-expression",
+      "purpose": "tiny ear movement for low-frequency idle variation",
+      "status": "formal",
+      "source": "frames/ear-twitch",
+      "gif": null
+    },
+    {
+      "id": "tail-sway",
+      "frames": 6,
+      "priority": 14,
+      "mode": "idle-or-leisure",
+      "purpose": "breathing-like calm idle loop with gentle tail movement",
+      "status": "formal",
+      "source": "frames/tail-sway",
+      "gif": null
+    },
+    {
+      "id": "yawn",
+      "frames": 6,
+      "priority": 15,
+      "mode": "sleepy",
+      "purpose": "sleepy transition before night or long idle rest",
+      "status": "formal",
+      "source": "frames/yawn",
+      "gif": null
+    },
+    {
+      "id": "paw-wave",
+      "frames": 6,
+      "priority": 16,
+      "mode": "reminder-or-hover",
+      "purpose": "small greeting before reminders and hover reactions",
+      "status": "formal",
+      "source": "frames/paw-wave",
+      "gif": null
+    },
+    {
+      "id": "celebrate",
+      "frames": 6,
+      "priority": 17,
+      "mode": "success",
+      "purpose": "small happy celebration after task success",
+      "status": "formal",
+      "source": "sources/celebrate.png",
+      "gif": "gifs/miu-celebrate.gif"
+    },
+    {
+      "id": "comfort",
+      "frames": 6,
+      "priority": 18,
+      "mode": "failed",
+      "purpose": "gentle sympathetic reaction after failure without drama",
+      "status": "formal",
+      "source": "sources/comfort.png",
+      "gif": "gifs/miu-comfort.gif"
+    }
+  ]
+}

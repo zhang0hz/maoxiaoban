@@ -1,0 +1,26 @@
+{
+  "pet": "Miu",
+  "version": "V1.1",
+  "policy": "Formal runtime assets for the macOS desktop runner. Deprecated material remains archived but should not be referenced by runtime code.",
+  "assets": [
+    { "id": "loaf", "status": "formal", "runtimeUse": "primary quiet work companion and fallback action", "frames": 6 },
+    { "id": "sleep", "status": "formal", "runtimeUse": "night mode and fullscreen hidden action", "frames": 6 },
+    { "id": "wake", "status": "formal", "runtimeUse": "morning transition", "frames": 6 },
+    { "id": "stretch", "status": "formal", "runtimeUse": "morning, work idle, reminder-adjacent transition", "frames": 6 },
+    { "id": "peek", "status": "formal", "runtimeUse": "leisure transition and medium idle leisure", "frames": 6 },
+    { "id": "groom", "status": "formal", "runtimeUse": "quiet idle, sleepy transition, reminder dismissal", "frames": 6 },
+    { "id": "purr", "status": "formal", "runtimeUse": "calm idle fallback and sit-watch color-safe alias", "frames": 6 },
+    { "id": "walk-right", "status": "formal", "runtimeUse": "right-moving leisure walk loop", "frames": 8 },
+    { "id": "walk-left", "status": "formal", "runtimeUse": "left-moving leisure walk loop", "frames": 8 },
+    { "id": "blink", "status": "formal", "runtimeUse": "low-frequency micro-expression", "frames": 6 },
+    { "id": "ear-twitch", "status": "formal", "runtimeUse": "reserved low-frequency micro-expression", "frames": 6 },
+    { "id": "tail-sway", "status": "formal", "runtimeUse": "breathing-like leisure idle loop", "frames": 6 },
+    { "id": "yawn", "status": "formal", "runtimeUse": "sleepy and long-idle transition", "frames": 6 },
+    { "id": "paw-wave", "status": "formal", "runtimeUse": "hover and reminder lead-in reaction", "frames": 6 },
+    { "id": "celebrate", "status": "formal", "runtimeUse": "completion and reminder-save confirmation", "frames": 6 },
+    { "id": "comfort", "status": "formal", "runtimeUse": "snooze and failure comfort reaction", "frames": 6 }
+  ],
+  "deprecated": [
+    "Any early frames outside phase1-actions/frames unless explicitly copied into this manifest."
+  ]
+}
