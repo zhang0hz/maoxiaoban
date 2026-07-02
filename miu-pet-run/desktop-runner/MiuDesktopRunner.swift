@@ -164,12 +164,12 @@ final class MiuRunner: NSObject, NSApplicationDelegate {
             x: screen.maxX - displaySize.width - config.margin,
             y: screen.minY + config.margin
         )
-        let start = NSRect(
+        let start = clampedPetFrame(NSRect(
             x: origin.x,
             y: origin.y,
             width: displaySize.width,
             height: displaySize.height
-        )
+        ), in: screen)
         window = NSPanel(
             contentRect: start,
             styleMask: [.borderless, .nonactivatingPanel],
@@ -203,9 +203,14 @@ final class MiuRunner: NSObject, NSApplicationDelegate {
         petView.contextMenuProvider = { [weak self] in
             self?.makeControlMenu() ?? NSMenu()
         }
+        petView.frameConstraintProvider = { [weak self] frame in
+            guard let self else { return frame }
+            return self.clampedPetFrame(frame, in: self.placementVisibleFrame())
+        }
         petView.wantsLayer = true
         petView.layer?.backgroundColor = NSColor.clear.cgColor
         window.contentView = petView
+        setPetWindowInteractive(true)
         window.orderFrontRegardless()
     }
 

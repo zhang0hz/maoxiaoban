@@ -81,7 +81,8 @@ extension MiuRunner {
         let anyInput = CGEventType(rawValue: ~0)!
         let idleSeconds = CGEventSource.secondsSinceLastEventType(.combinedSessionState, eventType: anyInput)
         let screen = placementVisibleFrame()
-        let front = frontWindowRect(on: screen)
+        let frontWindows = frontWindowRects(on: screen)
+        let front = frontWindows.first
         let coverage = front.map { windowCoverage($0, screen) } ?? 0
         let snapshot = activityClassifier.snapshot(
             idleSeconds: idleSeconds,
@@ -111,9 +112,10 @@ extension MiuRunner {
             lastBehaviorState = .temporaryReaction
             window.alphaValue = 1.0
             setAction(reminderMotion)
+            setPetWindowInteractive(true)
             recordBehaviorLog(decision: lastDebugDecision)
             showReminderBubble(reminder)
-            if !userPositionPinned { placeCorner(screen: screen, avoiding: front) }
+            if !userPositionPinned { placeCorner(screen: screen, avoiding: frontWindows) }
             if settingsWindow?.isVisible == true { syncSettingsWindow() }
             refreshMenus()
             return
@@ -132,7 +134,7 @@ extension MiuRunner {
                 keepWalkingPlacement: false
             )
         }
-        applyBehaviorDecision(decision, screen: screen, front: front)
+        applyBehaviorDecision(decision, screen: screen, frontWindows: frontWindows)
         if settingsWindow?.isVisible == true { syncSettingsWindow() }
     }
 
@@ -169,7 +171,7 @@ extension MiuRunner {
         }
     }
 
-    func applyBehaviorDecision(_ decision: BehaviorDecision, screen: NSRect, front: NSRect?) {
+    func applyBehaviorDecision(_ decision: BehaviorDecision, screen: NSRect, frontWindows: [NSRect]) {
         let previousState = lastBehaviorState
         var appliedDecision = decision
         if !decision.shouldHide && decision.state != .temporaryReaction {
@@ -186,6 +188,7 @@ extension MiuRunner {
             hideReminderBubble()
             setAction(appliedDecision.action)
             window.alphaValue = 0.0
+            setPetWindowInteractive(false)
         } else {
             window.alphaValue = 1.0
             if appliedDecision.state == .temporaryReaction {
@@ -195,11 +198,14 @@ extension MiuRunner {
             }
         }
         recordBehaviorLog(decision: appliedDecision)
-        guard appliedDecision.shouldPlace && !userPositionPinned else { return }
-        if appliedDecision.keepWalkingPlacement && (currentAction == "walk-right" || currentAction == "walk-left") {
-            return
+        if appliedDecision.shouldPlace && !userPositionPinned {
+            if !(appliedDecision.keepWalkingPlacement && (currentAction == "walk-right" || currentAction == "walk-left")) {
+                placeCorner(screen: screen, avoiding: frontWindows)
+            }
         }
-        placeCorner(screen: screen, avoiding: front)
+        if !appliedDecision.shouldHide {
+            setPetWindowInteractive(petShouldAcceptMouseEvents(hidden: false, frontWindows: frontWindows))
+        }
     }
 
     func recordBehaviorLog(decision: BehaviorDecision?) {

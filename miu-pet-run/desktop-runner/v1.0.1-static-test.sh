@@ -22,8 +22,8 @@ require_text() {
 
 require_file "$RUNNER/V1.0.1_INTERNAL_STABILITY.md"
 
-require_text "$RUNNER/Info.plist" "1.0.1"
-require_text "$RUNNER/Info.plist" "101"
+require_text "$RUNNER/Info.plist" "1.0.2"
+require_text "$RUNNER/Info.plist" "104"
 
 require_text "$RUNNER/PetView.swift" "override func hitTest"
 require_text "$RUNNER/PetView.swift" "alphaHitTestThreshold"

@@ -2,23 +2,39 @@ import AppKit
 
 final class PetView: NSView {
     var image: NSImage? {
-        didSet { needsDisplay = true }
+        didSet {
+            rebuildAlphaBitmap()
+            needsDisplay = true
+        }
     }
     var onUserDragged: (() -> Void)?
     var onUserDragEnded: (() -> Void)?
     var onMouseEnteredPet: (() -> Void)?
     var onMouseExitedPet: (() -> Void)?
     var contextMenuProvider: (() -> NSMenu)?
+    var frameConstraintProvider: ((NSRect) -> NSRect)?
     private var dragStartMouse: NSPoint?
     private var dragStartFrame: NSRect?
+    private var didDrag = false
     private var trackingAreaRef: NSTrackingArea?
+    private var alphaBitmap: NSBitmapImageRep?
     private let alphaHitTestThreshold: CGFloat = 0.08
+    private let dragThreshold: CGFloat = 3
 
     override var isFlipped: Bool { true }
 
     override func hitTest(_ point: NSPoint) -> NSView? {
-        guard bounds.contains(point), isOpaquePixel(at: point) else { return nil }
+        guard window?.alphaValue ?? 1 > 0.05,
+              window?.ignoresMouseEvents == false,
+              bounds.contains(point),
+              isOpaquePixel(at: point)
+        else { return nil }
         return self
+    }
+
+    override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
+        rebuildAlphaBitmap()
     }
 
     override func updateTrackingAreas() {
@@ -46,15 +62,19 @@ final class PetView: NSView {
     override func mouseDown(with event: NSEvent) {
         dragStartMouse = NSEvent.mouseLocation
         dragStartFrame = window?.frame
+        didDrag = false
     }
 
     override func mouseDragged(with event: NSEvent) {
         guard let window, let dragStartMouse, let dragStartFrame else { return }
         let current = NSEvent.mouseLocation
         let delta = NSPoint(x: current.x - dragStartMouse.x, y: current.y - dragStartMouse.y)
+        if hypot(delta.x, delta.y) < dragThreshold { return }
+        didDrag = true
         var next = dragStartFrame
         next.origin.x += delta.x
         next.origin.y += delta.y
+        next = frameConstraintProvider?(next) ?? next
         window.setFrame(next, display: true)
         onUserDragged?()
     }
@@ -62,7 +82,10 @@ final class PetView: NSView {
     override func mouseUp(with event: NSEvent) {
         dragStartMouse = nil
         dragStartFrame = nil
-        onUserDragEnded?()
+        if didDrag {
+            onUserDragEnded?()
+        }
+        didDrag = false
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -79,18 +102,26 @@ final class PetView: NSView {
     }
 
     func isOpaquePixel(at point: NSPoint) -> Bool {
-        guard let image,
+        guard let alphaBitmap,
               bounds.width > 0,
               bounds.height > 0,
-              let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)
-        else {
-            return false
-        }
-        let bitmap = NSBitmapImageRep(cgImage: cgImage)
+              alphaBitmap.pixelsWide > 0,
+              alphaBitmap.pixelsHigh > 0
+        else { return false }
         let xRatio = min(max(point.x / bounds.width, 0), 1)
         let yRatio = min(max(point.y / bounds.height, 0), 1)
-        let pixelX = min(max(Int(xRatio * CGFloat(bitmap.pixelsWide)), 0), bitmap.pixelsWide - 1)
-        let pixelY = min(max(Int(yRatio * CGFloat(bitmap.pixelsHigh)), 0), bitmap.pixelsHigh - 1)
-        return (bitmap.colorAt(x: pixelX, y: pixelY)?.alphaComponent ?? 1) > alphaHitTestThreshold
+        let pixelX = min(max(Int(xRatio * CGFloat(alphaBitmap.pixelsWide)), 0), alphaBitmap.pixelsWide - 1)
+        let pixelY = min(max(Int(yRatio * CGFloat(alphaBitmap.pixelsHigh)), 0), alphaBitmap.pixelsHigh - 1)
+        return (alphaBitmap.colorAt(x: pixelX, y: pixelY)?.alphaComponent ?? 0) > alphaHitTestThreshold
+    }
+
+    private func rebuildAlphaBitmap() {
+        guard let image,
+              let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)
+        else {
+            alphaBitmap = nil
+            return
+        }
+        alphaBitmap = NSBitmapImageRep(cgImage: cgImage)
     }
 }

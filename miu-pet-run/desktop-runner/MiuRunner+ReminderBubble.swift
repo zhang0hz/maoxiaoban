@@ -70,9 +70,29 @@ extension MiuRunner {
     func placeReminderBubble() {
         guard let reminderBubble, let window else { return }
         let petFrame = window.frame
-        let x = petFrame.midX - reminderBubble.frame.width / 2
-        let y = petFrame.maxY + 10
-        reminderBubble.setFrameOrigin(NSPoint(x: x, y: y))
+        let screen = NSScreen.screens.first(where: { $0.visibleFrame.intersects(petFrame) || $0.frame.intersects(petFrame) })?.visibleFrame
+            ?? placementVisibleFrame()
+        reminderBubble.setFrameOrigin(
+            clampedReminderBubbleOrigin(
+                bubbleSize: reminderBubble.frame.size,
+                petFrame: petFrame,
+                visibleFrame: screen
+            )
+        )
+    }
+
+    func clampedReminderBubbleOrigin(bubbleSize: CGSize, petFrame: NSRect, visibleFrame: NSRect) -> NSPoint {
+        let margin: CGFloat = 10
+        let preferredY = petFrame.maxY + margin
+        let fallbackY = petFrame.minY - bubbleSize.height - margin
+        let y = preferredY + bubbleSize.height <= visibleFrame.maxY
+            ? preferredY
+            : fallbackY
+        let x = petFrame.midX - bubbleSize.width / 2
+        return NSPoint(
+            x: min(max(x, visibleFrame.minX + margin), visibleFrame.maxX - bubbleSize.width - margin),
+            y: min(max(y, visibleFrame.minY + margin), visibleFrame.maxY - bubbleSize.height - margin)
+        )
     }
 
     func hideReminderBubble() {

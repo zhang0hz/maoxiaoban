@@ -8,12 +8,14 @@
 *.xcarchive/
 
 # Local runner outputs
+.superpowers/
 miu-pet-run/desktop-runner/MiuDesktopRunner
 miu-pet-run/desktop-runner/*.log
 miu-pet-run/desktop-runner/*.pid
 miu-pet-run/desktop-runner/module-cache/
 miu-pet-run/desktop-runner/猫小伴.app/
 miu-pet-run/dist/
+investor-demo/maoxiaoban-demo.html
 
 # Signing / notarization secrets
 miu-pet-run/desktop-runner/release.env

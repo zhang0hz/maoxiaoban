@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>猫小伴投资方 Demo</title>
+    <meta name="description" content="猫小伴是一个懂工作状态、低打扰、本地隐私优先的 macOS 桌面电子宠物。">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar" aria-label="Demo navigation">
+      <a class="brand" href="#hero" aria-label="回到猫小伴 Demo 首页">
+        <img src="assets/app-icon-1024.png" alt="" class="brand-icon">
+        <span>猫小伴 Demo</span>
+      </a>
+      <nav class="chapter-nav" aria-label="章节">
+        <a href="#work">工作</a>
+        <a href="#reminders">提醒</a>
+        <a href="#signals">能力</a>
+        <a href="#investor">亮点</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section-panel" id="hero" data-section="hero" data-demo-step="0">
+        <div class="copy">
+          <p class="eyebrow">macOS 桌面电子宠物</p>
+          <h1>猫小伴</h1>
+          <p class="lead">懂工作状态、低打扰、本地隐私优先的桌面陪伴 App。</p>
+          <div class="actions">
+            <button class="primary-action" id="startDemo" type="button">开始 3 分钟演示</button>
+            <a class="secondary-action" href="#work">查看功能亮点</a>
+          </div>
+        </div>
+        <div class="desktop-mock hero-demo" aria-label="猫小伴桌面演示">
+          <div class="mock-menubar">
+            <span></span>
+            <strong>工作窗口</strong>
+            <span>09:42</span>
+          </div>
+          <div class="mock-window window-main">
+            <div class="window-lines"></div>
+            <div class="window-lines short"></div>
+            <div class="window-grid"></div>
+          </div>
+          <div class="pet-stage edge-right">
+            <img src="assets/miu-loaf.gif" alt="猫小伴安静趴在桌面边缘" class="pet-gif pet-breathe">
+            <span class="pet-shadow"></span>
+          </div>
+          <div class="status-chip">工作中：安静陪伴</div>
+        </div>
+      </section>
+
+      <section class="section-panel split-panel" id="work" data-section="work" data-demo-step="1">
+        <div class="copy">
+          <p class="eyebrow">场景 1</p>
+          <h2>工作时，它在旁边，不抢你的注意力</h2>
+          <p>猫小伴会根据前台应用、窗口覆盖率和空闲状态，选择更安静的动作，并尽量待在安全边缘。</p>
+        </div>
+        <div class="desktop-mock work-demo">
+          <div class="mock-window moving-window">
+            <span class="window-title">文档 / 会议 / 浏览器</span>
+            <div class="window-lines"></div>
+            <div class="window-lines"></div>
+          </div>
+          <div class="pet-stage work-pet">
+            <img src="assets/miu-loaf.gif" alt="猫小伴工作模式安静陪伴" class="pet-gif">
+          </div>
+          <div class="demo-caption">窗口靠近时，小猫保持在边缘，降低打扰。</div>
+        </div>
+      </section>
+
+      <section class="section-panel" id="leisure" data-section="leisure" data-demo-step="2">
+        <div class="section-heading">
+          <p class="eyebrow">场景 2</p>
+          <h2>休闲和空闲时，它会活起来</h2>
+          <p>散步、探头、伸懒腰、睡觉都来自当前项目里的真实动作资产。</p>
+        </div>
+        <div class="motion-strip" aria-label="猫小伴动作预览">
+          <article><img src="assets/miu-peek.gif" alt="探头"><strong>探头</strong></article>
+          <article><img src="assets/miu-edge-walk.gif" alt="边缘散步"><strong>散步</strong></article>
+          <article><img src="assets/miu-stretch.gif" alt="伸懒腰"><strong>伸懒腰</strong></article>
+          <article><img src="assets/miu-sleep.gif" alt="睡觉"><strong>夜晚睡觉</strong></article>
+        </div>
+      </section>
+
+      <section class="section-panel split-panel" id="reminders" data-section="reminders" data-demo-step="3">
+        <div class="copy">
+          <p class="eyebrow">场景 3</p>
+          <h2>提醒不是闹钟，是轻轻碰你一下</h2>
+          <p>喝水、休息、久坐、睡觉提醒会在安静工作和全屏状态下延后，不把提醒变成新的干扰源。</p>
+        </div>
+        <div class="reminder-demo">
+          <img src="assets/miu-peek.gif" alt="猫小伴提醒前探头" class="pet-gif reminder-pet">
+          <div class="reminder-bubble" id="reminderBubble" aria-live="polite">
+            <strong>喝口水吧</strong>
+            <span id="reminderStatus">当前状态：可以提醒</span>
+            <div class="reminder-actions">
+              <button type="button" data-reminder-action="done">完成</button>
+              <button type="button" data-reminder-action="later">稍后</button>
+              <button type="button" data-reminder-action="skip">跳过</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-panel split-panel" id="signals" data-section="signals" data-demo-step="4">
+        <div class="copy">
+          <p class="eyebrow">核心能力</p>
+          <h2>它不是普通桌宠，而是桌面行为感知系统</h2>
+          <p>猫小伴把本地桌面信号转成低打扰的陪伴动作：知道你在工作、休闲、会议、全屏或空闲。</p>
+        </div>
+        <div class="signal-demo">
+          <ol class="flow" aria-label="桌面信号到宠物行为流程">
+            <li data-flow-step="0">前台应用</li>
+            <li data-flow-step="1">窗口覆盖率</li>
+            <li data-flow-step="2">行为判断</li>
+            <li data-flow-step="3">小猫动作</li>
+          </ol>
+          <div class="debug-card">
+            <span>状态：工作</span>
+            <span>动作：loaf</span>
+            <span>提醒队列：延后 1 条</span>
+            <span>原因：低打扰</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-panel" id="privacy" data-section="privacy" data-demo-step="5">
+        <div class="section-heading">
+          <p class="eyebrow">隐私边界</p>
+          <h2>本地优先，不上传屏幕内容</h2>
+          <p>当前版本读取前台应用、窗口几何和空闲时间；不读取窗口正文内容，不联网同步数据。</p>
+        </div>
+        <div class="privacy-grid">
+          <article><strong>读取</strong><span>应用名称、Bundle ID、窗口几何、空闲时间</span></article>
+          <article><strong>本地保存</strong><span>设置、提醒、应用分类</span></article>
+          <article><strong>不上传</strong><span>屏幕内容、窗口正文、个人数据</span></article>
+        </div>
+      </section>
+
+      <section class="section-panel" id="investor" data-section="investor" data-demo-step="6">
+        <div class="section-heading">
+          <p class="eyebrow">投资亮点</p>
+          <h2>从桌面挂件，走向日常陪伴入口</h2>
+          <p>当前版本已经验证桌面陪伴、低打扰提醒和本地行为感知；后续可扩展到皮肤、动作包、AI 对话和办公健康陪伴。</p>
+        </div>
+        <div class="value-grid">
+          <article><img src="assets/miu-celebrate.gif" alt=""><strong>情绪陪伴</strong><span>从工具软件进入日常情绪场景。</span></article>
+          <article><img src="assets/miu-edge-walk.gif" alt=""><strong>桌面入口</strong><span>长期停留在用户工作流边缘。</span></article>
+          <article><img src="assets/phase1-contact-sheet.png" alt=""><strong>资产扩展</strong><span>宠物、动作、皮肤都可体系化增长。</span></article>
+          <article><img src="assets/app-icon-1024.png" alt=""><strong>商业路径</strong><span>订阅、联名、企业陪伴和高级能力。</span></article>
+        </div>
+      </section>
+    </main>
+
+    <aside class="demo-controller" aria-label="录屏模式控制">
+      <span id="demoProgress">演示未开始</span>
+      <button id="prevStep" type="button">上一段</button>
+      <button id="pauseDemo" type="button">暂停</button>
+      <button id="nextStep" type="button">下一段</button>
+    </aside>
+
+    <script src="script.js"></script>
+  </body>
+</html>

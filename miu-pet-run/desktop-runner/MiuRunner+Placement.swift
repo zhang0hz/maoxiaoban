@@ -28,6 +28,22 @@ extension MiuRunner {
         placeReminderBubble()
     }
 
+    func setPetWindowInteractive(_ interactive: Bool) {
+        guard let window else { return }
+        window.ignoresMouseEvents = !interactive
+    }
+
+    func petShouldAcceptMouseEvents(hidden: Bool, frontWindows: [NSRect]) -> Bool {
+        guard !hidden, let window else { return false }
+        return !isPetCoveredByFrontWindows(window.frame, frontWindows: frontWindows)
+    }
+
+    func isPetCoveredByFrontWindows(_ petFrame: NSRect, frontWindows: [NSRect]) -> Bool {
+        let petArea = max(1, petFrame.width * petFrame.height)
+        let coveredArea = totalIntersectionArea(petFrame, frontWindows)
+        return coveredArea / petArea > 0.12
+    }
+
     func bestSafePlacement(in screen: NSRect, avoiding frontWindow: NSRect?) -> NSRect {
         bestSafePlacement(in: screen, avoiding: windowAvoidanceRects(on: screen, primary: frontWindow))
     }
@@ -108,6 +124,10 @@ extension MiuRunner {
             x: min(max(origin.x, screen.minX + placementMargin), screen.maxX - size.width - placementMargin),
             y: min(max(origin.y, screen.minY + placementMargin), screen.maxY - size.height - placementMargin)
         )
+    }
+
+    func clampedPetFrame(_ frame: NSRect, in screen: NSRect) -> NSRect {
+        NSRect(origin: clampOrigin(frame.origin, size: frame.size, in: screen), size: frame.size)
     }
 
     func intersectionArea(_ left: NSRect, _ right: NSRect) -> CGFloat {
@@ -193,15 +213,36 @@ extension MiuRunner {
             let height = bounds["Height"] as? CGFloat ?? 0
             if width < 80 || height < 80 { continue }
             let raw = NSRect(x: x, y: y, width: width, height: height)
-            let fullScreen = NSScreen.main?.frame ?? screen
-            let converted = NSRect(x: x, y: fullScreen.maxY - y - height, width: width, height: height)
-            let rect = bestScreenCoordinateRect(raw: raw, converted: converted, screen: screen)
+            let rect = bestScreenCoordinateRect(raw: raw, screen: screen)
             if intersectionArea(rect, screen) > 0 {
                 rects.append(rect)
             }
             if rects.count >= 6 { break }
         }
         return rects
+    }
+
+    func candidateScreenCoordinateRects(raw: NSRect, screen: NSRect) -> [NSRect] {
+        let screenFrames = NSScreen.screens.map(\.frame)
+        let desktopFrame = screenFrames.reduce(screen) { partial, frame in
+            partial.union(frame)
+        }
+        var candidates = [raw]
+        candidates.append(contentsOf: screenFrames.map { frame in
+            NSRect(
+                x: raw.origin.x,
+                y: frame.maxY - raw.origin.y - raw.height,
+                width: raw.width,
+                height: raw.height
+            )
+        })
+        candidates.append(NSRect(
+            x: raw.origin.x,
+            y: desktopFrame.maxY - raw.origin.y - raw.height,
+            width: raw.width,
+            height: raw.height
+        ))
+        return candidates
     }
 
     func windowAvoidanceRects(on screen: NSRect, primary: NSRect?) -> [NSRect] {
@@ -212,13 +253,18 @@ extension MiuRunner {
         return rects
     }
 
+    func bestScreenCoordinateRect(raw: NSRect, screen: NSRect) -> NSRect {
+        candidateScreenCoordinateRects(raw: raw, screen: screen).max { left, right in
+            intersectionArea(left, screen) < intersectionArea(right, screen)
+        } ?? raw
+    }
+
     func bestScreenCoordinateRect(raw: NSRect, converted: NSRect, screen: NSRect) -> NSRect {
-        let rawOverlap = intersectionArea(raw, screen)
-        let convertedOverlap = intersectionArea(converted, screen)
-        if convertedOverlap > rawOverlap {
-            return converted
+        let candidates = candidateScreenCoordinateRects(raw: raw, screen: screen) + [converted]
+        return candidates.max { left, right in
+            intersectionArea(left, screen) < intersectionArea(right, screen)
         }
-        return raw
+            ?? raw
     }
 
     func windowCoverage(_ window: NSRect, _ screen: NSRect) -> CGFloat {
